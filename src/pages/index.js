@@ -37,14 +37,16 @@ export async function getStaticProps() {
 
 export default function Home({ posts }) {
   return (
-    <Grid container spacing={2}>
-      <Grid container spacing={2} item xs={9}>
+      <Grid container direction="row"
+      justifyContent="center"
+      alignItems="flex-start" item spacing={{ xs: 2, md: 3 }} columns={{ xs: 2, sm: 8, md: 12 }}>
         {posts.map(({ slug, frontmatter }) => (
-          <Grid key={slug} item xs={4}>
-            <Card sx={{ maxWidth: 345 }}>
+          <Grid key={slug} item xs={2} sm={4} md={4}>
+            <Card>
               <Image
-                width={345}
-                height={200}
+                width="100%"
+                height={40}
+                layout="responsive"
                 alt={frontmatter.blogTitle}
                 src={`/${frontmatter.blogImage}`}
               />
@@ -65,7 +67,5 @@ export default function Home({ posts }) {
           </Grid>
         ))}
       </Grid>
-      <Grid item xs={3}></Grid>
-    </Grid>
   );
 }
